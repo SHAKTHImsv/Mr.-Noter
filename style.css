@@ -1,41 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
 }
-.navbar{
+
+body {
+    font-family: 'Poppins', sans-serif; /* Use the imported font */
+}
+
+.navbar {
     background-color: #ee3040;
     padding: 10px;
+    text-align: center; /* Center-align text in navbar */
 }
+
 .container {
     padding: 20px;
-    display: inline-block;
-    vertical-align: top;
-    min-height: 100px; /* Add a minimum height to keep space */
-    width: 100%; /* Ensure it takes full width */
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: center; /* Center align content */
 }
 
 .content {
-    display: inline-block; /* Keep it as inline-block for horizontal stacking */
     background-color: black;
     color: white;
-    padding: 20px; /* Padding adds space inside the element */
+    padding: 20px;
     border-radius: 10px;
-    margin: 10px; /* Space between notes */
-    max-width: 25%; /* Optional: limit width */
-    vertical-align: top; /* Aligns items at the top */
+    margin: 10px;
+    flex: 1 1 200px; /* Flex-grow and basis for responsive sizing */
+    max-width: 300px; /* Limit max width for better responsiveness */
 }
 
-.content h2{
+.content h2 {
     color: #ee3040;
 }
-.content p{
+
+.content p {
     margin-top: 10px;
     font-size: 20px;
 }
-.content button{
+
+.content button {
     padding: 10px 15px;
     margin-top: 10px;
     background-color: #ee3040;
@@ -43,7 +50,8 @@
     border-radius: 30px;
     border: none;
 }
-.add{
+
+.add {
     padding: 20px 30px;
     background-color: #ee3040;
     font-size: 40px;
@@ -52,7 +60,9 @@
     right: 30px;
     border-radius: 100%;
     border: none;
+    z-index: 2; /* Ensure it's above other elements */
 }
+
 .overlay {
     background-color: black;
     opacity: 0.8;
@@ -65,18 +75,21 @@
     display: none; 
 }
 
-.box{
-    width: 40%;
+.box {
+    width: 90%; /* Make it responsive */
+    max-width: 500px; /* Limit max width */
     padding: 20px;
     background-color: red;
     z-index: 4;
-    position: absolute;
+    position: fixed; /* Use fixed positioning for better visibility */
     border-radius: 10px;
-    top: 20%;
-    left: 30%;
+    top: 50%; /* Center it vertically */
+    left: 50%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Adjust for centering */
     display: none;
 }
-.box input{
+
+.box input {
     background: transparent;
     width: 90%;
     border: none;
@@ -85,30 +98,47 @@
     border-bottom: 2px solid black;
     outline: none;
     margin-top: 20px;
-
 }
-.box input::placeholder{
+
+.box input::placeholder {
     color: black;
 }
-.box textarea{
+
+.box textarea {
     width: 90%;
     background: transparent;
     border: 2px solid black;
     margin-top: 20px;
     padding: 5px;
     font-size: 20px;
-    margin-top: 20px;
     outline: none;
 }
-.box button{
+
+.box button {
     color: white;
     background-color: black;
     padding: 10px 10px;
     border-radius: 10px;
     border: none;
     margin-top: 20px;
-    
 }
-.box textarea::placeholder{
+
+.box textarea::placeholder {
     color: black;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .add {
+        padding: 15px 20px;
+        font-size: 30px; /* Adjust button size for mobile */
+    }
+
+    .box {
+        width: 95%; /* Adjust box width for smaller screens */
+    }
+
+    .content {
+        max-width: 90%; /* Make content more flexible */
+    }
 }
